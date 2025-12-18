@@ -10,7 +10,6 @@ export default function Login() {
 
   const handleLogin = () => {
     setLoading(true);
-
     setTimeout(() => {
       setLoading(false);
       navigate(`/${role}/dashboard`);
@@ -29,7 +28,6 @@ export default function Login() {
           One platform for all your campus needs
         </p>
 
-        {/* Role Tabs */}
         <div className="role-tabs">
           {["student", "lecturer", "admin"].map((r) => (
             <button
@@ -42,28 +40,16 @@ export default function Login() {
           ))}
         </div>
 
-        {/* Login Form */}
         <div className="login-form">
-          {role === "student" && (
-            <input
-              type="text"
-              placeholder="Registration Number"
-              className="login-input"
-            />
-          )}
-
-          {role !== "student" && (
-            <input
-              type="text"
-              placeholder={role === "admin" ? "Admin ID" : "Email"}
-              className="login-input"
-            />
-          )}
+          <input
+            className="login-input"
+            placeholder="Email"
+          />
 
           <input
             type="password"
-            placeholder="Password"
             className="login-input"
+            placeholder="Password"
           />
 
           <button
@@ -75,7 +61,6 @@ export default function Login() {
           </button>
         </div>
 
-        {/* Signup link */}
         <p className="footer-text">
           Don’t have an account?{" "}
           <Link to="/signup" className="auth-link">

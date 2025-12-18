@@ -3,9 +3,8 @@ import DashboardShell from "../../components/layout/DashboardShell";
 import { MOCK_TIMETABLE } from "../../lib/mock-data";
 import "../../studenttimetable.css";
 
-
 export default function StudentTimetable() {
-  const days = Object.keys(MOCK_TIMETABLE);
+  const days = Object.keys(MOCK_TIMETABLE); // now includes Saturday
   const [activeDay, setActiveDay] = useState("Monday");
 
   return (
