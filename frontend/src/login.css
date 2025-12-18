@@ -143,3 +143,12 @@
   font-weight: 500;
   cursor: pointer;
 }
+.auth-link {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}

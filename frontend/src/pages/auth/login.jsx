@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { GraduationCap } from "lucide-react";
 import "../../login.css";
 
@@ -11,7 +11,6 @@ export default function Login() {
   const handleLogin = () => {
     setLoading(true);
 
-    // Simulate login API
     setTimeout(() => {
       setLoading(false);
       navigate(`/${role}/dashboard`);
@@ -21,7 +20,6 @@ export default function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-        {/* Icon */}
         <div className="login-icon">
           <GraduationCap size={28} />
         </div>
@@ -77,8 +75,12 @@ export default function Login() {
           </button>
         </div>
 
-        <p className="login-footer">
-          Don’t have an account? <span>Contact Administration</span>
+        {/* Signup link */}
+        <p className="footer-text">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="auth-link">
+            Sign up
+          </Link>
         </p>
       </div>
     </div>

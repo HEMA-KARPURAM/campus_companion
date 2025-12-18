@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /* Auth */
 import Login from "./pages/auth/login";
-
+import Signup from "./pages/auth/signup";
 /* Student Pages */
 import StudentDashboard from "./pages/student/dashboard";
 import StudentProfile from "./pages/student/profile";
@@ -23,6 +23,8 @@ function App() {
       <Routes>
         {/* Auth */}
         <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
 
         {/* Student */}
         <Route path="/student/dashboard" element={<StudentDashboard />} />

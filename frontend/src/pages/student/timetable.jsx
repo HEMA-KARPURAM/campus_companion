@@ -1,6 +1,8 @@
 import { useState } from "react";
 import DashboardShell from "../../components/layout/DashboardShell";
 import { MOCK_TIMETABLE } from "../../lib/mock-data";
+import "../../studenttimetable.css";
+
 
 export default function StudentTimetable() {
   const days = Object.keys(MOCK_TIMETABLE);

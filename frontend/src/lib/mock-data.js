@@ -147,7 +147,24 @@ export const MOCK_TIMETABLE = {
       status: "scheduled",
     },
   ],
+   Tuesday: [
+    {
+      time: "09:00 - 10:00",
+      subject: "Computer Networks",
+      room: "CS-101",
+      type: "Lecture",
+      status: "scheduled",
+    },
+    {
+      time: "10:00 - 11:00",
+      subject: "Algorithms",
+      room: "CS-103",
+      type: "Lecture",
+      status: "scheduled",
+    },
+  ],
 };
+
 
 /* =====================
    EVENTS

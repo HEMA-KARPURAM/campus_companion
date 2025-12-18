@@ -1,0 +1,124 @@
+/* Page Background */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+/* Card */
+.auth-card {
+  width: 420px;
+  background: linear-gradient(180deg, #020617, #020617);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05),
+              0 30px 60px rgba(0,0,0,0.6);
+  color: #fff;
+  text-align: center;
+}
+
+/* Icon */
+.auth-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title */
+.auth-card h1 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+/* Role Tabs */
+.role-tabs {
+  display: flex;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.role-tabs button {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.role-tabs button.active {
+  background: #020617;
+  color: #fff;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #020617;
+  color: #fff;
+  font-size: 14px;
+}
+
+.auth-form input::placeholder {
+  color: #64748b;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Button */
+.primary-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #fff;
+  color: #020617;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer-text {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-text span {
+  color: #fff;
+  cursor: pointer;
+}
