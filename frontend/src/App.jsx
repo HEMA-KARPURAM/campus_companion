@@ -1,25 +1,48 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Dashboard from "./pages/Dashboard";
-import Events from "./pages/Events";
-import Announcements from "./pages/Announcements";
-import Profile from "./pages/Profile";
+/* Auth */
+import Login from "./pages/auth/login";
 
-export default function App() {
+/* Student Pages */
+import StudentDashboard from "./pages/student/dashboard";
+import StudentProfile from "./pages/student/profile";
+import StudentTimetable from "./pages/student/Timetable";
+import StudentEvents from "./pages/student/events";
+import StudentAssignments from "./pages/student/assignment";
+import StudentResults from "./pages/student/results";
+
+/* Lecturer Pages */
+import LecturerDashboard from "./pages/lecturer/dashboard";
+
+/* Admin Pages */
+import AdminDashboard from "./pages/admin/dashboard";
+
+function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/announcements" element={<Announcements />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* Auth */}
+        <Route path="/" element={<Login />} />
+
+        {/* Student */}
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/student/profile" element={<StudentProfile />} />
+        <Route path="/student/timetable" element={<StudentTimetable />} />
+        <Route path="/student/events" element={<StudentEvents />} />
+        <Route path="/student/assignments" element={<StudentAssignments />} />
+        <Route path="/student/results" element={<StudentResults />} />
+
+        {/* Lecturer */}
+        <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
+
+        {/* Admin */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+
+        {/* 404 */}
+        <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </BrowserRouter>
   );
 }
+
+export default App;

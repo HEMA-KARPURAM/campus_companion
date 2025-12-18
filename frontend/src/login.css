@@ -1,0 +1,145 @@
+/* Page background */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+      circle at top,
+      rgba(59, 130, 246, 0.15),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #020617, #020617);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(2, 6, 23, 0.85);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+  backdrop-filter: blur(16px);
+}
+
+/* Icon */
+.login-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+
+/* Title */
+.login-card h1 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* Role tabs */
+.role-tabs {
+  display: flex;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 22px;
+}
+
+.role-tabs button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.role-tabs button.active {
+  background: rgba(2, 6, 23, 0.9);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(2, 6, 23, 0.8);
+  color: #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-form input::placeholder {
+  color: #6b7280;
+}
+
+.login-form input:focus {
+  border-color: #3b82f6;
+}
+
+/* Button */
+.login-btn {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f9fafb;
+  color: #020617;
+  transition: all 0.25s ease;
+}
+
+.login-btn:hover {
+  background: #e5e7eb;
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer-text {
+  text-align: center;
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 22px;
+}
+
+.footer-text span {
+  color: #ffffff;
+  font-weight: 500;
+  cursor: pointer;
+}
