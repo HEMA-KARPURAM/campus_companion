@@ -1,6 +1,8 @@
 import DashboardShell from "../../components/layout/DashboardShell";
 import { Calendar, MapPin, Users } from "lucide-react";
 import { MOCK_EVENTS } from "../../lib/mock-data";
+import "../../studentsevents.css";
+
 
 export default function StudentEvents() {
   return (
