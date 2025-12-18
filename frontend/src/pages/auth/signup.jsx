@@ -1,27 +1,25 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GraduationCap } from "lucide-react";
 import "../../signup.css";
 
 export default function Signup() {
-  const navigate = useNavigate();
   const [role, setRole] = useState("student");
   const [loading, setLoading] = useState(false);
 
   const handleSignup = () => {
     setLoading(true);
 
-    // simulate signup API
     setTimeout(() => {
       setLoading(false);
-      alert("Signup successful!");
-      navigate("/"); // ✅ redirect to Login page
+      alert(`Signup successful as ${role}!`);
     }, 1000);
   };
 
   return (
     <div className="auth-page">
       <div className="auth-card">
+        {/* Icon */}
         <div className="auth-icon">
           <GraduationCap size={28} />
         </div>
@@ -34,7 +32,7 @@ export default function Signup() {
           {["student", "lecturer", "admin"].map((r) => (
             <button
               key={r}
-              className={`role-btn ${role === r ? "active" : ""}`}
+              className={role === r ? "active" : ""}
               onClick={() => setRole(r)}
             >
               {r.charAt(0).toUpperCase() + r.slice(1)}
@@ -44,19 +42,33 @@ export default function Signup() {
 
         {/* Form */}
         <div className="auth-form">
+          {/* STUDENT ONLY */}
           {role === "student" && (
-            <input placeholder="Registration Number" />
-          )}
-
-          {role !== "student" && (
             <input
-              placeholder={role === "admin" ? "Admin ID" : "Email Address"}
+              type="text"
+              placeholder="Registration Number"
+              className="auth-input"
             />
           )}
 
-          <input type="email" placeholder="Email Address" />
-          <input type="password" placeholder="Create Password" />
-          <input type="password" placeholder="Confirm Password" />
+          {/* EMAIL FOR ALL ROLES */}
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="auth-input"
+          />
+
+          {/* PASSWORDS */}
+          <input
+            type="password"
+            placeholder="Create Password"
+            className="auth-input"
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="auth-input"
+          />
 
           <button
             className="primary-btn"
@@ -67,7 +79,7 @@ export default function Signup() {
           </button>
         </div>
 
-        {/* ✅ Login redirect */}
+        {/* Footer */}
         <p className="footer-text">
           Already have an account?{" "}
           <Link to="/" className="auth-link">
