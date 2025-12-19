@@ -1,11 +1,6 @@
 .page-title {
   color: white;
-  margin-bottom: 6px;
-}
-
-.page-subtitle {
-  color: #9ca3af;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .filter-bar {
@@ -22,12 +17,15 @@
   border: 1px solid rgba(255,255,255,0.15);
 }
 
+/* CARD */
 .timetable-list {
   background: rgba(15, 23, 42, 0.7);
   border-radius: 16px;
   padding: 20px;
+  max-width: 900px;
 }
 
+/* ROW */
 .timetable-row {
   display: flex;
   justify-content: space-between;
@@ -43,8 +41,10 @@
 .muted {
   color: #9ca3af;
   font-size: 14px;
+  margin-top: 4px;
 }
 
+/* RIGHT SIDE */
 .row-actions {
   display: flex;
   align-items: center;
@@ -58,10 +58,12 @@
   font-size: 13px;
 }
 
+/* STATUS */
 .status {
   padding: 5px 10px;
   border-radius: 999px;
   font-size: 12px;
+  text-transform: capitalize;
 }
 
 .status.scheduled {
@@ -74,24 +76,115 @@
   color: #f87171;
 }
 
+/* BUTTON */
 .swap-btn {
   background: transparent;
   border: 1px solid #3b82f6;
   color: #60a5fa;
   padding: 6px 12px;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.swap-btn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+/* INFO */
+.info-box {
+  margin-top: 16px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+/* ============================= */
+/* SWAP MODAL */
+/* ============================= */
+
+.swap-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.swap-modal {
+  width: 420px;
+  background: linear-gradient(180deg, #020617, #020617ee);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.swap-modal h2 {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.swap-info {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.swap-info strong {
+  color: white;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.swap-info p,
+.swap-info span {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.swap-form label {
+  color: #9ca3af;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.swap-form select {
+  width: 100%;
+  background: #020617;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.swap-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .cancel-btn {
   background: transparent;
   border: 1px solid #ef4444;
   color: #f87171;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
 }
 
-.info-box {
-  margin-top: 16px;
-  color: #9ca3af;
-  font-size: 14px;
-}

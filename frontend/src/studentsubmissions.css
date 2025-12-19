@@ -1,0 +1,80 @@
+.submission-container {
+  margin-top: 20px;
+}
+
+.page-title {
+  color: white;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.submission-card {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+/* HEADER */
+.submission-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1fr;
+  color: #9ca3af;
+  font-size: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ROW */
+.submission-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1fr;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.submission-row:last-child {
+  border-bottom: none;
+}
+
+/* STATUS */
+.status {
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.status.submitted {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.status.pending {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+/* BUTTONS */
+.view-btn {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.disabled-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #9ca3af;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: not-allowed;
+}

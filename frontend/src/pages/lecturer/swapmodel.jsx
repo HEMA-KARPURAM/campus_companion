@@ -1,40 +1,49 @@
-// src/pages/lecturer/swapmodel.jsx
-
 import { useState } from "react";
+import "../../lecturertimetable.css";
 import { faculties } from "../../lib/mock-lecturer-data";
 
 export default function SwapModel({ classData, onClose, onSubmit }) {
   const [selectedFaculty, setSelectedFaculty] = useState("");
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-card">
+    <div className="swap-overlay">
+      <div className="swap-modal">
         <h2>Request Class Swap</h2>
 
-        <p>
-          <strong>{classData.subject}</strong><br />
-          {classData.day} | {classData.time}
-        </p>
+        <div className="swap-info">
+          <strong>{classData.subject}</strong>
+          <p>
+            {classData.day} | {classData.time}
+          </p>
+          <span>
+            {classData.branch} – Section {classData.section}
+          </span>
+        </div>
 
-        <select
-          value={selectedFaculty}
-          onChange={(e) => setSelectedFaculty(e.target.value)}
-        >
-          <option value="">Select Faculty</option>
-          {faculties
-            .filter(f => f.id !== classData.facultyId)
-            .map(f => (
-              <option key={f.id} value={f.id}>
-                {f.name}
+        <div className="swap-form">
+          <label>Select Faculty</label>
+          <select
+            value={selectedFaculty}
+            onChange={(e) => setSelectedFaculty(e.target.value)}
+          >
+            <option value="">Choose Faculty</option>
+            {faculties.map((fac) => (
+              <option key={fac.id} value={fac.id}>
+                {fac.name} ({fac.department})
               </option>
             ))}
-        </select>
+          </select>
+        </div>
 
-        <div className="modal-actions">
-          <button onClick={onClose}>Cancel</button>
+        <div className="swap-actions">
+          <button className="cancel-btn" onClick={onClose}>
+            Cancel
+          </button>
+
           <button
+            className="primary-btn"
             disabled={!selectedFaculty}
-            onClick={() => onSubmit(selectedFaculty)}
+            onClick={onSubmit}
           >
             Send Request
           </button>

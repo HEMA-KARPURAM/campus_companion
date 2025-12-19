@@ -9,6 +9,8 @@ import LecturerLayout from "./pages/lecturer/lecturerlayout.jsx";
 import LecturerDashboard from "./pages/lecturer/dashboard.jsx";
 import LecturerTimetable from "./pages/lecturer/timetable.jsx";
 import LecturerAssignment from "./pages/lecturer/assignment.jsx";
+import LecturerStudentSubmission from "./pages/lecturer/studentsubmission.jsx";
+
 // import LecturerMarks from "./pages/lecturer/marks.jsx";
 // import LecturerAnnouncements from "./pages/lecturer/announcements.jsx";
 

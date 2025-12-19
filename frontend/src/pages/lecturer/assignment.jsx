@@ -1,88 +1,80 @@
-import { Upload, FileText, Calendar, Bell } from "lucide-react";
 import "../../assignment.css";
 
-export default function UploadAssignment() {
+export default function LecturerAssignment() {
   return (
-    <div className="lecturer-page">
-      
-      {/* Header */}
-      <div className="page-header">
-        <h1>Upload Assignment</h1>
-        <p>Create and assign coursework to your students</p>
-      </div>
+    <div className="upload-container">
+      <h1 className="page-title">Upload Assignment</h1>
+      <p className="page-subtitle">
+        Create and assign coursework to your students
+      </p>
 
-      {/* Assignment Card */}
-      <div className="card assignment-card">
+      <div className="upload-card">
+        {/* LEFT FORM */}
+        <div className="assignment-form">
+          <div>
+            <label>Assignment Title</label>
+            <input type="text" placeholder="Enter assignment title" />
+          </div>
 
-        {/* Assignment Details */}
-        <div className="form-group">
-          <label>Assignment Title</label>
-          <input type="text" placeholder="Enter assignment title" />
-        </div>
+          <div>
+            <label>Subject</label>
+            <select>
+              <option>Select subject</option>
+              <option>Operating Systems</option>
+              <option>DBMS</option>
+              <option>Computer Networks</option>
+            </select>
+          </div>
 
-        <div className="form-group">
-          <label>Description</label>
-          <textarea placeholder="Enter assignment description"></textarea>
-        </div>
+          <div className="full-width">
+            <label>Description</label>
+            <textarea placeholder="Enter assignment description" />
+          </div>
 
-        {/* Target Selection */}
-        <div className="form-row">
-          <select>
-            <option>Subject</option>
-            <option>Operating Systems</option>
-            <option>DBMS</option>
-            <option>Computer Networks</option>
-          </select>
+          <div>
+            <label>Branch</label>
+            <select>
+              <option>Select branch</option>
+              <option>CSE</option>
+              <option>ECE</option>
+              <option>EEE</option>
+            </select>
+          </div>
 
-          <select>
-            <option>Branch</option>
-            <option>CSE</option>
-            <option>ECE</option>
-          </select>
+          <div>
+            <label>Section</label>
+            <select>
+              <option>Select section</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+          </div>
 
-          <select>
-            <option>Section</option>
-            <option>A</option>
-            <option>B</option>
-          </select>
-        </div>
-
-        {/* Deadline */}
-        <div className="form-row">
-          <div className="form-group">
-            <label>
-              <Calendar size={16} /> Deadline Date
-            </label>
+          <div>
+            <label>Deadline Date</label>
             <input type="date" />
           </div>
 
-          <div className="form-group">
+          <div>
             <label>Deadline Time</label>
             <input type="time" />
           </div>
         </div>
 
-        {/* File Upload */}
+        {/* RIGHT UPLOAD */}
         <div className="upload-box">
-          <FileText size={24} />
-          <p>Upload Assignment (PDF only)</p>
-          <input type="file" accept="application/pdf" />
+          <div className="upload-icon">📄</div>
+          <h4>Upload Assignment</h4>
+          <p>PDF files only</p>
+          <input type="file" accept=".pdf" />
         </div>
+      </div>
 
-        {/* Actions */}
-        <div className="form-actions">
-          <button className="btn-primary">
-            <Upload size={16} /> Upload Assignment
-          </button>
-          <button className="btn-secondary">Reset</button>
-        </div>
-
-        {/* Info */}
-        <div className="info-text">
-          <Bell size={14} />
-          Students will be notified automatically once the assignment is uploaded.
-        </div>
-
+      {/* ACTION BUTTONS */}
+      <div className="submit-row">
+        <button className="reset-btn">Reset</button>
+        <button className="submit-btn">Upload Assignment</button>
       </div>
     </div>
   );

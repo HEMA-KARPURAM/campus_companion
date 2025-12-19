@@ -116,5 +116,6 @@ export const timetableData = [
     facultyId: "FAC001",
     status: "scheduled"
   }
+  
 ];
 export const swapRequests = [];

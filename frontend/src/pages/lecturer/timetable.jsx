@@ -4,10 +4,8 @@ import { timetableData } from "../../lib/mock-lecturer-data";
 import SwapModel from "./swapmodel";
 
 export default function LecturerTimetable() {
-  // 🔐 Assume logged-in faculty
   const loggedInFacultyId = "FAC001";
 
-  // 🎛 Filters
   const [selectedDay, setSelectedDay] = useState("Monday");
   const [selectedBranch, setSelectedBranch] = useState("CSE");
   const [selectedSection, setSelectedSection] = useState("A");
@@ -15,7 +13,6 @@ export default function LecturerTimetable() {
   const [selectedClass, setSelectedClass] = useState(null);
   const [showSwapModal, setShowSwapModal] = useState(false);
 
-  // 📌 FILTERED TIMETABLE (CORE LOGIC)
   const filteredTimetable = timetableData.filter(
     (cls) =>
       cls.facultyId === loggedInFacultyId &&
@@ -33,8 +30,8 @@ export default function LecturerTimetable() {
     <div className="lecturer-page">
       <h1 className="page-title">Manage Timetable</h1>
 
-      {/* FILTER CONTROLS */}
-      <div className="filter-row">
+      {/* FILTER BAR */}
+      <div className="filter-bar">
         <select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
           <option>Monday</option>
           <option>Tuesday</option>
@@ -56,24 +53,26 @@ export default function LecturerTimetable() {
         </select>
       </div>
 
-      {/* TIMETABLE LIST */}
-      <div className="timetable-card">
+      {/* TIMETABLE */}
+      <div className="timetable-list">
         {filteredTimetable.length === 0 && (
-          <p className="sub-text">No classes scheduled</p>
+          <p className="muted">No classes scheduled</p>
         )}
 
         {filteredTimetable.map((cls) => (
-          <div key={cls.id} className="class-row">
+          <div key={cls.id} className="timetable-row">
             <div>
               <strong>{cls.subject}</strong>
-              <p>
+              <div className="muted">
                 {cls.branch} – Section {cls.section}
-              </p>
+              </div>
             </div>
 
-            <div className="class-actions">
-              <span className={`badge ${cls.status}`}>
-                {cls.time}
+            <div className="row-actions">
+              <span className="time-pill">{cls.time}</span>
+
+              <span className={`status ${cls.status}`}>
+                {cls.status}
               </span>
 
               {cls.status === "scheduled" && (
@@ -89,7 +88,10 @@ export default function LecturerTimetable() {
         ))}
       </div>
 
-      {/* SWAP MODAL */}
+      <div className="info-box">
+        Cancelling or swapping a class will notify students automatically.
+      </div>
+
       {showSwapModal && (
         <SwapModel
           classData={selectedClass}
