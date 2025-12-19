@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { GraduationCap } from "lucide-react";
-import "../../login.css";
+import "./login.css";
 
 export default function Login() {
   const navigate = useNavigate();
   const [role, setRole] = useState("student");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     setLoading(true);
+
     setTimeout(() => {
       setLoading(false);
       navigate(`/${role}/dashboard`);
@@ -17,21 +19,20 @@ export default function Login() {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-card">
-        <div className="login-icon">
-          <GraduationCap size={28} />
+    <div className="login-wrapper">
+      <div className="login-container">
+        <div className="login-header">
+          <GraduationCap size={42} />
+          <h1>Campus Companion</h1>
+          <p>One platform for all your campus needs</p>
         </div>
 
-        <h1 className="login-title">Campus Companion</h1>
-        <p className="login-subtitle">
-          One platform for all your campus needs
-        </p>
-
+        {/* Role Tabs */}
         <div className="role-tabs">
           {["student", "lecturer", "admin"].map((r) => (
             <button
               key={r}
+              type="button"
               className={`role-btn ${role === r ? "active" : ""}`}
               onClick={() => setRole(r)}
             >
@@ -40,33 +41,37 @@ export default function Login() {
           ))}
         </div>
 
-        <div className="login-form">
-          <input
-            className="login-input"
-            placeholder="Email"
-          />
+        {/* Login Form */}
+        <form className="login-form" onSubmit={handleLogin}>
+          {role === "student" ? (
+            <input
+              type="text"
+              placeholder="Registration Number"
+              required
+            />
+          ) : (
+            <input
+              type="text"
+              placeholder={role === "admin" ? "Admin ID" : "Email"}
+              required
+            />
+          )}
 
           <input
             type="password"
-            className="login-input"
             placeholder="Password"
+            required
           />
 
-          <button
-            className="login-btn"
-            onClick={handleLogin}
-            disabled={loading}
-          >
+          <button type="submit" disabled={loading}>
             {loading ? "Logging in..." : `Login as ${role}`}
           </button>
-        </div>
+        </form>
 
-        <p className="footer-text">
-          Don’t have an account?{" "}
-          <Link to="/signup" className="auth-link">
-            Sign up
-          </Link>
-        </p>
+        <div className="login-footer">
+          <span>Don’t have an account?</span>
+          <Link to="/signup">Sign up</Link>
+        </div>
       </div>
     </div>
   );
