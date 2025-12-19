@@ -12,7 +12,6 @@ import StudentEvents from "./pages/student/events";
 import StudentAssignments from "./pages/student/assignment";
 import StudentResults from "./pages/student/results";
 
-
 /* Lecturer */
 import LecturerDashboard from "./pages/lecturer/dashboard";
 
@@ -35,16 +34,21 @@ function App() {
         <Route path="/student/assignments" element={<StudentAssignments />} />
         <Route path="/student/results" element={<StudentResults />} />
 
-
-
         {/* Lecturer */}
         <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
 
         {/* Admin */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
-        {/* Fallback */}
-        <Route path="*" element={<h2>404 Page</h2>} />
+        {/* 404 */}
+        <Route
+          path="*"
+          element={
+            <div style={{ padding: 40, color: "white" }}>
+              <h2>404 – Page Not Found</h2>
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

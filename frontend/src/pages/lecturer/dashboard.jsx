@@ -1,88 +1,51 @@
-import { useState } from "react";
 import DashboardShell from "../../components/layout/DashboardShell";
-import { MOCK_ASSIGNMENTS } from "../../lib/mock-data";
-import { Upload, FileText, CheckCircle, Clock } from "lucide-react";
+import {
+  LECTURER_ID,
+  LECTURER_TIMETABLE,
+} from "../../lib/mock-lecturer-data";
 
-export default function StudentAssignments() {
-  const [openDialog, setOpenDialog] = useState(false);
-  const [currentAssignment, setCurrentAssignment] = useState(null);
+export default function LecturerDashboard() {
+  const today = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+
+  const todaysClasses = LECTURER_TIMETABLE.filter(
+    (cls) =>
+      cls.day === today && cls.lecturerId === LECTURER_ID
+  );
 
   return (
-    <DashboardShell role="student">
+    <DashboardShell role="lecturer">
       <div className="page">
-        <div>
-          <h2>Assignments</h2>
-          <p className="subtitle">Track and submit your coursework</p>
-        </div>
+        <h2>Today’s Classes</h2>
+        <p className="subtitle">
+          {today} · Based on branch & section
+        </p>
 
-        <div className="assignment-list">
-          {MOCK_ASSIGNMENTS.map((a) => (
-            <div key={a.id} className="assignment-card">
-              <div className="assignment-info">
-                <div className="title-row">
-                  <h3>{a.title}</h3>
-                  <span className={`status ${a.status}`}>{a.status}</span>
-                </div>
-
-                <p className="subject">{a.subject}</p>
-
-                <div className="meta">
-                  <span><Clock size={14} /> Due: {a.dueDate}</span>
-                  <span><FileText size={14} /> {a.totalMarks} Marks</span>
-                </div>
+        {todaysClasses.length === 0 ? (
+          <p className="empty-text">No classes scheduled today</p>
+        ) : (
+          todaysClasses.map((cls, index) => (
+            <div key={index} className="today-class-card">
+              <div className="class-time">
+                {cls.time}
               </div>
 
-              <div className="assignment-action">
-                {a.status === "pending" && (
-                  <button
-                    className="primary-btn"
-                    onClick={() => {
-                      setCurrentAssignment(a.title);
-                      setOpenDialog(true);
-                    }}
-                  >
-                    <Upload size={16} /> Submit
-                  </button>
-                )}
-
-                {a.status === "submitted" && (
-                  <button className="outline-btn" disabled>
-                    <CheckCircle size={16} /> Submitted
-                  </button>
-                )}
-
-                {a.status === "graded" && (
-                  <div className="grade-box">
-                    <span>Grade</span>
-                    <strong>{a.grade}</strong>
-                  </div>
-                )}
+              <div className="class-info">
+                <h4>{cls.subject}</h4>
+                <p>
+                  {cls.branch} - Section {cls.section}
+                </p>
+                <span className="room">{cls.room}</span>
               </div>
+
+              <span
+                className={`status ${cls.status}`}
+              >
+                {cls.status}
+              </span>
             </div>
-          ))}
-        </div>
-
-        {/* Upload Dialog */}
-        {openDialog && (
-          <div className="modal-backdrop">
-            <div className="modal">
-              <h3>Submit Assignment</h3>
-              <p className="subtitle">
-                Upload your solution for <b>{currentAssignment}</b> (PDF only)
-              </p>
-
-              <input type="file" accept=".pdf" />
-
-              <div className="modal-actions">
-                <button className="outline-btn" onClick={() => setOpenDialog(false)}>
-                  Cancel
-                </button>
-                <button className="primary-btn">
-                  Upload
-                </button>
-              </div>
-            </div>
-          </div>
+          ))
         )}
       </div>
     </DashboardShell>
