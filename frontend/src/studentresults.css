@@ -1,0 +1,88 @@
+.results-page {
+  padding: 32px;
+  color: #e5e7eb;
+}
+
+.results-page h1 {
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.results-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.results-toggle button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.results-toggle button.active {
+  background: #ffffff;
+  color: #020617;
+  font-weight: 600;
+}
+
+.result-card {
+  background: linear-gradient(180deg, #020617, #020617);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.result-header h3 {
+  margin: 0;
+}
+
+.semester {
+  color: #93c5fd;
+  font-size: 14px;
+}
+
+.gpa-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.1);
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  color: #9ca3af;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+tbody td {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.grade {
+  font-weight: 600;
+}

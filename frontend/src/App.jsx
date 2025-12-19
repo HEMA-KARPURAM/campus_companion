@@ -9,6 +9,9 @@ import StudentDashboard from "./pages/student/dashboard";
 import StudentProfile from "./pages/student/profile";
 import StudentTimetable from "./pages/student/timetable";
 import StudentEvents from "./pages/student/events";
+import StudentAssignments from "./pages/student/assignment";
+import StudentResults from "./pages/student/results";
+
 
 /* Lecturer */
 import LecturerDashboard from "./pages/lecturer/dashboard";
@@ -29,6 +32,9 @@ function App() {
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/timetable" element={<StudentTimetable />} />
         <Route path="/student/events" element={<StudentEvents />} />
+        <Route path="/student/assignments" element={<StudentAssignments />} />
+        <Route path="/student/results" element={<StudentResults />} />
+
 
 
         {/* Lecturer */}

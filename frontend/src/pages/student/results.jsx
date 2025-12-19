@@ -1,64 +1,106 @@
+import { useState } from "react";
 import DashboardShell from "../../components/layout/DashboardShell";
-import { MOCK_RESULTS } from "../../lib/mock-data";
 import { TrendingUp } from "lucide-react";
+import "../../studentresults.css";
+
+const MID_RESULTS = [
+  {
+    title: "Mid Term 1",
+    semester: "Semester 5",
+    gpa: "8.33",
+    subjects: [
+      { name: "Operating Systems", obtained: 25, total: 30, grade: "A" },
+      { name: "DBMS", obtained: 22, total: 30, grade: "B+" },
+      { name: "Web Tech", obtained: 28, total: 30, grade: "A+" },
+    ],
+  },
+  {
+    title: "Mid Term 2",
+    semester: "Semester 4",
+    gpa: "8.15",
+    subjects: [
+      { name: "Mathematics IV", obtained: 85, total: 100, grade: "A" },
+      { name: "COA", obtained: 78, total: 100, grade: "B+" },
+    ],
+  },
+];
+
+const SEM_RESULTS = [
+  {
+    title: "Semester 5 Results",
+    semester: "Semester 5",
+    gpa: "8.42",
+    subjects: [
+      { name: "Operating Systems", obtained: 82, total: 100, grade: "A" },
+      { name: "DBMS", obtained: 75, total: 100, grade: "B+" },
+      { name: "Web Technologies", obtained: 88, total: 100, grade: "A+" },
+    ],
+  },
+];
 
 export default function StudentResults() {
+  const [view, setView] = useState("mid");
+
+  const data = view === "mid" ? MID_RESULTS : SEM_RESULTS;
+
   return (
     <DashboardShell role="student">
-      <div className="page">
-        <div className="page-header">
-          <h2>Academic Results</h2>
-          <p className="muted">Your performance history</p>
+      <div className="results-page">
+        <h1>Academic Results</h1>
+        <p className="subtitle">Your performance history</p>
+
+        {/* Toggle */}
+        <div className="results-toggle">
+          <button
+            className={view === "mid" ? "active" : ""}
+            onClick={() => setView("mid")}
+          >
+            Mid Term Results
+          </button>
+          <button
+            className={view === "sem" ? "active" : ""}
+            onClick={() => setView("sem")}
+          >
+            Semester Results
+          </button>
         </div>
 
-        <div className="results-list">
-          {MOCK_RESULTS.map((result, idx) => {
-            const gpa =
-              result.subjects.reduce(
-                (acc, curr) => acc + (curr.marks / curr.total) * 10,
-                0
-              ) / result.subjects.length;
-
-            return (
-              <div className="card" key={idx}>
-                <div className="result-header">
-                  <div>
-                    <h3>{result.exam}</h3>
-                    <p className="muted">Semester {result.semester}</p>
-                  </div>
-
-                  <div className="gpa-badge">
-                    <TrendingUp size={16} />
-                    GPA: {gpa.toFixed(2)}
-                  </div>
-                </div>
-
-                <div className="table-wrapper">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Subject</th>
-                        <th>Marks</th>
-                        <th>Total</th>
-                        <th>Grade</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {result.subjects.map((subject, sIdx) => (
-                        <tr key={sIdx}>
-                          <td>{subject.name}</td>
-                          <td>{subject.marks}</td>
-                          <td>{subject.total}</td>
-                          <td className="grade">{subject.grade}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+        {/* Results */}
+        {data.map((exam, idx) => (
+          <div key={idx} className="result-card">
+            <div className="result-header">
+              <div>
+                <h3>{exam.title}</h3>
+                <span className="semester">{exam.semester}</span>
               </div>
-            );
-          })}
-        </div>
+              <div className="gpa-badge">
+                <TrendingUp size={16} />
+                GPA: {exam.gpa}
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Marks Obtained</th>
+                  <th>Total Marks</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody>
+                {exam.subjects.map((s, i) => (
+                  <tr key={i}>
+                    <td>{s.name}</td>
+                    <td>{s.obtained}</td>
+                    <td>{s.total}</td>
+                    <td className="grade">{s.grade}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
       </div>
     </DashboardShell>
   );

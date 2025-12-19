@@ -1,67 +1,128 @@
+import { useState } from "react";
 import DashboardShell from "../../components/layout/DashboardShell";
-// import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
-import { MOCK_ASSIGNMENTS } from "../../lib/mock-data";
-// import { Button } from "../../components/ui/button";
-import { Upload, FileText, Clock, CheckCircle } from "lucide-react";
+import {
+  Clock,
+  FileText,
+  Upload,
+  CheckCircle,
+} from "lucide-react";
+import "../../studentassignments.css";
+
+const ASSIGNMENTS = [
+  {
+    id: 1,
+    title: "Build a Portfolio",
+    subject: "Web Technologies",
+    due: "2024-03-25",
+    marks: 10,
+    status: "pending",
+  },
+  {
+    id: 2,
+    title: "SQL Queries Practice",
+    subject: "DBMS",
+    due: "2024-03-18",
+    marks: 15,
+    status: "submitted",
+  },
+  {
+    id: 3,
+    title: "Process Scheduling",
+    subject: "Operating Systems",
+    due: "2024-03-10",
+    marks: 20,
+    status: "graded",
+    grade: "A",
+  },
+];
 
 export default function StudentAssignments() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [activeId, setActiveId] = useState(null);
+
+  const handleFileChange = (e, id) => {
+    setSelectedFile(e.target.files[0]);
+    setActiveId(id);
+  };
+
+  const handleSubmit = () => {
+    if (!selectedFile) {
+      alert("Please select a PDF file");
+      return;
+    }
+    alert(`Submitted: ${selectedFile.name}`);
+    setSelectedFile(null);
+    setActiveId(null);
+  };
+
   return (
     <DashboardShell role="student">
-      <div className="space-y-6">
-        <div>
-          <h2 className="text-3xl font-bold">Assignments</h2>
-          <p className="text-muted-foreground">
-            Track and submit your coursework
-          </p>
-        </div>
+      <div className="assignments-page">
+        <h1>Assignments</h1>
+        <p className="subtitle">Track and submit your coursework</p>
 
-        <div className="grid gap-4">
-          {MOCK_ASSIGNMENTS.map((assignment) => (
-            <Card key={assignment.id}>
-              <CardHeader>
-                <CardTitle>{assignment.title}</CardTitle>
-              </CardHeader>
+        <div className="assignment-list">
+          {ASSIGNMENTS.map((a) => (
+            <div key={a.id} className="assignment-card">
+              <div className="assignment-left">
+                <h3>
+                  {a.title}
+                  <span className={`status ${a.status}`}>
+                    {a.status}
+                  </span>
+                </h3>
 
-              <CardContent className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    <FileText className="inline w-4 h-4 mr-1" />
-                    {assignment.subject}
-                  </p>
+                <p className="subject">{a.subject}</p>
 
-                  <p className="text-sm text-muted-foreground">
-                    <Clock className="inline w-4 h-4 mr-1" />
-                    Due: {assignment.dueDate}
-                  </p>
-
-                  <p className="text-sm">
-                    Total Marks: <strong>{assignment.totalMarks}</strong>
-                  </p>
+                <div className="meta">
+                  <span>
+                    <Clock size={14} /> Due: {a.due}
+                  </span>
+                  <span>
+                    <FileText size={14} /> {a.marks} Marks
+                  </span>
                 </div>
+              </div>
 
-                <div>
-                  {assignment.status === "pending" && (
-                    <Button>
-                      <Upload className="w-4 h-4 mr-2" />
-                      Submit
-                    </Button>
-                  )}
+              <div className="assignment-right">
+                {a.status === "pending" && (
+                  <>
+                    <label className="upload-btn">
+                      <Upload size={16} />
+                      Select PDF
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        hidden
+                        onChange={(e) => handleFileChange(e, a.id)}
+                      />
+                    </label>
 
-                  {assignment.status === "submitted" && (
-                    <Button variant="outline" disabled>
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Submitted
-                    </Button>
-                  )}
+                    <button
+                      className="submit-btn"
+                      onClick={handleSubmit}
+                      disabled={activeId !== a.id}
+                    >
+                      Submit Work
+                    </button>
+                  </>
+                )}
 
-                  {assignment.status === "graded" && (
-                    <div className="px-4 py-2 border rounded-lg text-center bg-green-50 text-green-700">
-                      Grade: <strong>{assignment.grade}</strong>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
+                {a.status === "submitted" && (
+                  <button className="submitted-btn" disabled>
+                    <CheckCircle size={16} />
+                    Submitted
+                  </button>
+                )}
+
+                {a.status === "graded" && (
+                  <div className="grade-box">
+                    <span>Grade Received</span>
+                    <strong>{a.grade}</strong>
+                  </div>
+                )}
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -102,26 +102,31 @@ export const MOCK_NOTIFICATIONS = [
 export const MOCK_ASSIGNMENTS = [
   {
     id: 1,
-    title: "DBMS Assignment 2",
-    subject: "DBMS",
-    dueDate: "2024-10-05",
-    status: "Pending",
+    title: "Build a Portfolio",
+    subject: "Web Technologies",
+    dueDate: "2024-03-25",
+    marks: 10,
+    status: "pending",
   },
   {
     id: 2,
-    title: "OS Case Study",
-    subject: "Operating Systems",
-    dueDate: "2024-10-02",
-    status: "Submitted",
+    title: "SQL Queries Practice",
+    subject: "DBMS",
+    dueDate: "2024-03-18",
+    marks: 15,
+    status: "submitted",
   },
   {
     id: 3,
-    title: "Web Tech Mini Project",
-    subject: "Web Technologies",
-    dueDate: "2024-10-10",
-    status: "Pending",
+    title: "Process Scheduling",
+    subject: "Operating Systems",
+    dueDate: "2024-03-10",
+    marks: 20,
+    status: "graded",
+    grade: "A",
   },
 ];
+
 
 export const MOCK_EVENTS = [
   {
@@ -130,6 +135,7 @@ export const MOCK_EVENTS = [
     organizer: "Student Council",
     description: "Annual technical festival.",
     date: "2024-03-15",
+    location: "Main Auditorium",
     category: "College",
     registered: true,
   },
@@ -139,6 +145,7 @@ export const MOCK_EVENTS = [
     organizer: "CS Dept",
     description: "Intro to Neural Networks.",
     date: "2024-03-20",
+    location: "Main Auditorium",
     category: "Department",
     registered: false,
   },
@@ -146,9 +153,49 @@ export const MOCK_EVENTS = [
     id: 3,
     title: "Chess Tournament",
     organizer: "Sports Club",
-    description: "Inter-department chess competition.",
+    description: "Inter-department chess.",
     date: "2024-03-22",
+    location: "Main Auditorium",
     category: "Sports",
     registered: true,
   },
 ];
+
+export const MOCK_ANNOUNCEMENTS = [
+  {
+    id: 1,
+    type: "cancelled",
+    title: "DBMS Class Cancelled",
+    message: "Today's DBMS lecture has been cancelled.",
+    time: "2 hours ago",
+  },
+  {
+    id: 2,
+    type: "swapped",
+    title: "OS Class Swapped",
+    message: "Operating Systems class swapped with CN.",
+    time: "Today",
+  },
+  {
+    id: 3,
+    type: "assignment",
+    title: "New Assignment Uploaded",
+    message: "Web Technologies assignment uploaded.",
+    time: "Yesterday",
+  },
+  {
+    id: 4,
+    type: "deadline",
+    title: "Assignment Deadline Extended",
+    message: "DBMS assignment deadline extended to Mar 28.",
+    time: "1 day ago",
+  },
+  {
+    id: 5,
+    type: "exam",
+    title: "Midterm Timetable Updated",
+    message: "Midterm exam schedule has been revised.",
+    time: "Just now",
+  },
+];
+

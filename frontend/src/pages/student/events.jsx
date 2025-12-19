@@ -3,19 +3,17 @@ import { Calendar, MapPin, Users } from "lucide-react";
 import { MOCK_EVENTS } from "../../lib/mock-data";
 import "../../studentsevents.css";
 
-
 export default function StudentEvents() {
   return (
     <DashboardShell role="student">
-      <div className="page">
+      <div className="events-page">
         {/* Header */}
-        <div className="page-header">
+        <div className="events-header">
           <div>
-            <h2>Campus Events</h2>
-            <p className="subtitle">
-              Discover what's happening around you
-            </p>
+            <h1>Campus Events</h1>
+            <p>Discover what's happening around you</p>
           </div>
+
           <button className="outline-btn">My Registered Events</button>
         </div>
 
@@ -35,25 +33,29 @@ export default function StudentEvents() {
               </div>
 
               {/* Content */}
-              <div className="event-content">
+              <div className="event-body">
                 <h3>{event.title}</h3>
-                <p className="organizer">
-                  <Users size={14} /> {event.organizer}
-                </p>
 
-                <p className="description">{event.description}</p>
+                <div className="event-organizer">
+                  <Users size={14} />
+                  {event.organizer}
+                </div>
+
+                <p className="event-desc">{event.description}</p>
 
                 <div className="event-meta">
                   <span>
-                    <Calendar size={14} /> {event.date}
+                    <Calendar size={14} />
+                    {event.date}
                   </span>
                   <span>
-                    <MapPin size={14} /> Main Auditorium
+                    <MapPin size={14} />
+                    {event.location}
                   </span>
                 </div>
               </div>
 
-              {/* Footer */}
+              {/* Button */}
               <button
                 className={`event-btn ${
                   event.registered ? "outline-btn" : "primary-btn"
