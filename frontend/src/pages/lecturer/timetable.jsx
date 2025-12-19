@@ -1,90 +1,102 @@
-import "../../lecturertimetable.css";
 import { useState } from "react";
-
-const TIMETABLE_DATA = {
-  Monday: [
-    { time: "09:00 - 10:00", subject: "Operating Systems", code: "CS-101", status: "scheduled" },
-    { time: "10:00 - 11:00", subject: "DBMS", code: "CS-102", status: "scheduled" },
-    { time: "11:00 - 12:00", subject: "Computer Networks", code: "CS-103", status: "cancelled" },
-  ],
-  Tuesday: [
-    { time: "09:00 - 10:00", subject: "DBMS", code: "CS-102", status: "scheduled" },
-    { time: "10:00 - 11:00", subject: "Operating Systems", code: "CS-101", status: "scheduled" },
-  ],
-};
+import "../../lecturertimetable.css";
+import { timetableData } from "../../lib/mock-lecturer-data";
+import SwapModel from "./swapmodel";
 
 export default function LecturerTimetable() {
-  const [day, setDay] = useState("Monday");
-  const [branch, setBranch] = useState("CSE");
-  const [section, setSection] = useState("A");
+  // 🔐 Assume logged-in faculty
+  const loggedInFacultyId = "FAC001";
+
+  // 🎛 Filters
+  const [selectedDay, setSelectedDay] = useState("Monday");
+  const [selectedBranch, setSelectedBranch] = useState("CSE");
+  const [selectedSection, setSelectedSection] = useState("A");
+
+  const [selectedClass, setSelectedClass] = useState(null);
+  const [showSwapModal, setShowSwapModal] = useState(false);
+
+  // 📌 FILTERED TIMETABLE (CORE LOGIC)
+  const filteredTimetable = timetableData.filter(
+    (cls) =>
+      cls.facultyId === loggedInFacultyId &&
+      cls.day === selectedDay &&
+      cls.branch === selectedBranch &&
+      cls.section === selectedSection
+  );
+
+  const handleRequestSwap = (cls) => {
+    setSelectedClass(cls);
+    setShowSwapModal(true);
+  };
 
   return (
-    <div>
+    <div className="lecturer-page">
       <h1 className="page-title">Manage Timetable</h1>
-      <p className="page-subtitle">View, swap, or cancel your classes</p>
 
-      {/* Filters */}
-      <div className="filter-bar">
-        <select value={day} onChange={(e) => setDay(e.target.value)}>
+      {/* FILTER CONTROLS */}
+      <div className="filter-row">
+        <select value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
           <option>Monday</option>
           <option>Tuesday</option>
           <option>Wednesday</option>
-          <option>Thrusday</option>
+          <option>Thursday</option>
           <option>Friday</option>
-          <option>Saturday</option>
-
         </select>
 
-        <select value={branch} onChange={(e) => setBranch(e.target.value)}>
+        <select value={selectedBranch} onChange={(e) => setSelectedBranch(e.target.value)}>
           <option>CSE</option>
-          <option>CIC</option>
-          <option>AIML</option>
-          <option>CSD</option>
-          <option>CIVIL</option>
-          <option>IT</option>
+          <option>ECE</option>
+          <option>EEE</option>
         </select>
 
-        <select value={section} onChange={(e) => setSection(e.target.value)}>
+        <select value={selectedSection} onChange={(e) => setSelectedSection(e.target.value)}>
           <option>A</option>
           <option>B</option>
           <option>C</option>
-          <option>D</option>
-          <option>E</option>
         </select>
       </div>
 
-      {/* Timetable */}
-      <div className="timetable-list">
-        {TIMETABLE_DATA[day].map((cls, i) => (
-          <div key={i} className="timetable-row">
+      {/* TIMETABLE LIST */}
+      <div className="timetable-card">
+        {filteredTimetable.length === 0 && (
+          <p className="sub-text">No classes scheduled</p>
+        )}
+
+        {filteredTimetable.map((cls) => (
+          <div key={cls.id} className="class-row">
             <div>
-              <h4>{cls.subject}</h4>
-              <p className="muted">
-                {branch} – Section {section} • {cls.code}
+              <strong>{cls.subject}</strong>
+              <p>
+                {cls.branch} – Section {cls.section}
               </p>
             </div>
 
-            <div className="row-actions">
-              <span className="time-pill">{cls.time}</span>
-
-              <span className={`status ${cls.status}`}>
-                {cls.status}
+            <div className="class-actions">
+              <span className={`badge ${cls.status}`}>
+                {cls.time}
               </span>
 
-              {cls.status !== "cancelled" && (
-                <>
-                  <button className="swap-btn">Request Swap</button>
-                  <button className="cancel-btn">Cancel</button>
-                </>
+              {cls.status === "scheduled" && (
+                <button
+                  className="swap-btn"
+                  onClick={() => handleRequestSwap(cls)}
+                >
+                  Request Swap
+                </button>
               )}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="info-box">
-        ℹ️ Cancelling or swapping a class will notify students automatically.
-      </div>
+      {/* SWAP MODAL */}
+      {showSwapModal && (
+        <SwapModel
+          classData={selectedClass}
+          onClose={() => setShowSwapModal(false)}
+          onSubmit={() => setShowSwapModal(false)}
+        />
+      )}
     </div>
   );
 }

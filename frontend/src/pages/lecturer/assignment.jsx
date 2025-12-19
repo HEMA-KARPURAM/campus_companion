@@ -1,5 +1,5 @@
 import { Upload, FileText, Calendar, Bell } from "lucide-react";
-import "./assignment.css";
+import "../../assignment.css";
 
 export default function UploadAssignment() {
   return (
