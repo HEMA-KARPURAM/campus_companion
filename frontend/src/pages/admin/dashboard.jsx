@@ -1,108 +1,84 @@
-import DashboardShell from "../../components/layout/DashboardShell";
-import {
-  Users,
-  Calendar,
-  FileText,
-  Bell,
-  Plus
-} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import "../../admindashboard.css";
 
 export default function AdminDashboard() {
+  const navigate = useNavigate();
+
   return (
-    <DashboardShell role="admin">
-      <div className="dashboard-container">
-        {/* Header */}
-        <div className="dashboard-header">
-          <div>
-            <h1>Admin Dashboard</h1>
-            <p className="muted">System overview and management</p>
-          </div>
-        </div>
+    <div className="dashboard-layout">
 
-        {/* Stats */}
-        <div className="stats-grid">
-          <StatCard title="Total Students" value="2,450" icon={<Users />} />
-          <StatCard title="Faculty" value="120" icon={<Users />} />
-          <StatCard title="Active Events" value="8" icon={<Calendar />} />
-          <StatCard title="Circulars" value="12" icon={<Bell />} />
-        </div>
+      {/* QUICK ACTIONS */}
+      <aside className="quick-actions">
+        <h3>Admin Controls</h3>
 
-        {/* Management + Activity */}
-        <div className="content-grid">
-          {/* Management */}
-          <div className="card">
-            <h3>Management Console</h3>
-            <p className="muted">Manage academic resources and updates</p>
+        <button className="qa-btn" onClick={() => navigate("/admin/class-timetable")}>
+          📅 Class Timetable
+        </button>
 
-            <div className="action-grid">
-              <ActionButton
-                icon={<Calendar />}
-                title="Update Timetables"
-                desc="Modify class schedules and swaps"
-              />
-              <ActionButton
-                icon={<FileText />}
-                title="Exam Schedules"
-                desc="Upload exam dates"
-              />
-              <ActionButton
-                icon={<Bell />}
-                title="Publish Circular"
-                desc="Notify students and faculty"
-              />
-              <ActionButton
-                icon={<Plus />}
-                title="Add Event"
-                desc="Create college or department events"
-              />
-            </div>
+        <button className="qa-btn" onClick={() => navigate("/admin/exam-timetable")}>
+          📝 Exam Timetable
+        </button>
+
+        <button className="qa-btn">
+          📢 Announcements
+        </button>
+
+        <button className="qa-btn">
+          🎉 Events Management
+        </button>
+
+        <button className="qa-btn">
+          📄 Circulars & Results
+        </button>
+      </aside>
+
+      {/* MAIN CONTENT */}
+      <main className="dashboard-main">
+        <header className="dashboard-header">
+          <h1>Admin Dashboard</h1>
+          <p className="sub-text">Campus control & management panel</p>
+        </header>
+
+        {/* STAT CARDS */}
+        <section className="stat-grid">
+          <div className="stat-card">
+            <h4>Total Students</h4>
+            <p>1240</p>
           </div>
 
-          {/* Activity */}
-          <div className="card">
-            <h3>Recent Activity</h3>
-
-            <ul className="activity-list">
-              {[1, 2, 3, 4].map((i) => (
-                <li key={i}>
-                  <span className="dot" />
-                  <div>
-                    <strong>Circular #2024-{i} Published</strong>
-                    <p className="muted">Updated exam guidelines</p>
-                    <small>2 hours ago</small>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <div className="stat-card">
+            <h4>Total Lecturers</h4>
+            <p>86</p>
           </div>
-        </div>
-      </div>
-    </DashboardShell>
-  );
-}
 
-/* =====================
-   Helper Components
-===================== */
+          <div className="stat-card">
+            <h4>Departments</h4>
+            <p>6</p>
+          </div>
 
-function StatCard({ title, value, icon }) {
-  return (
-    <div className="stat-card">
-      <div>
-        <p className="muted">{title}</p>
-        <h2>{value}</h2>
-      </div>
-      <div className="icon">{icon}</div>
+          <div className="stat-card">
+            <h4>Active Notices</h4>
+            <p>9</p>
+          </div>
+        </section>
+
+        {/* RECENT ACTIVITY */}
+        <section className="activity-card">
+          <h3>Recent Activity</h3>
+
+          <div className="activity-row">
+            📌 Class timetable updated for CSE – Section A
+          </div>
+
+          <div className="activity-row">
+            📢 Mid exam timetable published
+          </div>
+
+          <div className="activity-row">
+            🎉 Technical fest event added (CSE Dept)
+          </div>
+        </section>
+      </main>
     </div>
-  );
-}
-
-function ActionButton({ icon, title, desc }) {
-  return (
-    <button className="action-button">
-      <div className="icon">{icon}</div>
-      <strong>{title}</strong>
-      <span>{desc}</span>
-    </button>
   );
 }

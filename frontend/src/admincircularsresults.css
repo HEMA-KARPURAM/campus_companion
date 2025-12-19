@@ -1,0 +1,76 @@
+.admin-page {
+  padding: 30px;
+  color: white;
+}
+
+.page-title {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: #9ca3af;
+  margin-bottom: 30px;
+}
+
+.admin-card {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 30px;
+}
+
+.admin-card h2 {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+input,
+select,
+textarea {
+  background: #020617;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+textarea {
+  min-height: 100px;
+  margin-bottom: 14px;
+}
+
+.file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+}
+
+.success-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+}
+
+.info-text {
+  margin-top: 20px;
+  color: #9ca3af;
+  font-size: 14px;
+}

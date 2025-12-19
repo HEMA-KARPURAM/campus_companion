@@ -11,10 +11,7 @@ import LecturerTimetable from "./pages/lecturer/timetable.jsx";
 import LecturerAssignment from "./pages/lecturer/assignment.jsx";
 import LecturerSubmissions from "./pages/lecturer/studentsubmissions.jsx";
 import LecturerAnnouncements from "./pages/lecturer/announcements.jsx";
-
-
 import LecturerMarks from "./pages/lecturer/marks.jsx";
-// import LecturerAnnouncements from "./pages/lecturer/announcements.jsx";
 
 /* STUDENT */
 import StudentDashboard from "./pages/student/dashboard.jsx";
@@ -23,6 +20,16 @@ import StudentAssignments from "./pages/student/assignment.jsx";
 import StudentEvents from "./pages/student/events.jsx";
 import StudentProfile from "./pages/student/profile.jsx";
 import StudentResults from "./pages/student/results.jsx";
+
+/* ADMIN */
+import AdminDashboard from "./pages/admin/dashboard.jsx";
+import AdminLayout from "./pages/admin/adminLayout.jsx";
+import AdminAnnouncements from "./pages/admin/announcements.jsx";
+
+import AdminExamTimetable from "./pages/admin/examTimetable.jsx";
+import AdminClassTimetable from "./pages/admin/classTimetable.jsx";
+import AdminCircularsResults from "./pages/admin/circularsResults.jsx";
+
 
 export default function App() {
   return (
@@ -33,7 +40,7 @@ export default function App() {
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* LECTURER ROUTES */}
+        {/* LECTURER */}
         <Route path="/lecturer" element={<LecturerLayout />}>
           <Route path="dashboard" element={<LecturerDashboard />} />
           <Route path="timetable" element={<LecturerTimetable />} />
@@ -41,13 +48,9 @@ export default function App() {
           <Route path="submissions" element={<LecturerSubmissions />} />
           <Route path="marks" element={<LecturerMarks />} />
           <Route path="announcements" element={<LecturerAnnouncements />} />
-
-
-          {/*<Route path="upload-marks" element={<LecturerMarks />} />
-          <Route path="announcements" element={<LecturerAnnouncements />} /> */}
         </Route>
 
-        {/* STUDENT ROUTES */}
+        {/* STUDENT */}
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/timetable" element={<StudentTimetable />} />
         <Route path="/student/assignments" element={<StudentAssignments />} />
@@ -55,7 +58,16 @@ export default function App() {
         <Route path="/student/results" element={<StudentResults />} />
         <Route path="/student/events" element={<StudentEvents />} />
 
+        {/* ADMIN ✅ FIXED */}
+        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="dashboard" element={<AdminDashboard />} />
+        <Route path="exam-timetable" element={<AdminExamTimetable />} />
+        <Route path="class-timetable" element={<AdminClassTimetable />} />
+        <Route path="announcements" element={<AdminAnnouncements />} />
+        <Route path="circulars-results" element={<AdminCircularsResults />} />
 
+
+        </Route>
       </Routes>
     </Router>
   );

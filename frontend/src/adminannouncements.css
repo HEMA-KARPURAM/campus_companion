@@ -1,0 +1,63 @@
+.admin-page {
+  padding: 30px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  margin-bottom: 25px;
+  opacity: 0.8;
+}
+
+.announce-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 18px;
+  max-width: 900px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-row input,
+.form-row select,
+textarea {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #0f172a;
+  color: white;
+  border: 1px solid #1e293b;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  margin-bottom: 20px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.info-text {
+  margin-top: 15px;
+  opacity: 0.75;
+}
