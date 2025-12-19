@@ -1,66 +1,88 @@
-import { useState } from "react";
-import "../../lecturerassignment.css";
+import { Upload, FileText, Calendar, Bell } from "lucide-react";
+import "./assignment.css";
 
-const MOCK_DATA = {
-  submitted: ["Alex J", "Rahul K", "Sneha M"],
-  notSubmitted: ["Anjali P", "Kiran S"],
-};
-
-export default function LecturerAssignmentSubmissions() {
-  const [branch, setBranch] = useState("CSE");
-  const [section, setSection] = useState("A");
-  const [subject, setSubject] = useState("Operating Systems");
-  const [view, setView] = useState("submitted");
-
+export default function UploadAssignment() {
   return (
-    <div className="page">
-      <h2 className="page-title">Assignment Submissions</h2>
-      <p className="page-subtitle">
-        Track student submissions easily
-      </p>
-
-      <div className="filter-bar">
-        <select value={branch} onChange={(e) => setBranch(e.target.value)}>
-          <option>CSE</option>
-          <option>ECE</option>
-        </select>
-
-        <select value={section} onChange={(e) => setSection(e.target.value)}>
-          <option>A</option>
-          <option>B</option>
-        </select>
-
-        <select value={subject} onChange={(e) => setSubject(e.target.value)}>
-          <option>Operating Systems</option>
-          <option>DBMS</option>
-        </select>
+    <div className="lecturer-page">
+      
+      {/* Header */}
+      <div className="page-header">
+        <h1>Upload Assignment</h1>
+        <p>Create and assign coursework to your students</p>
       </div>
 
-      <div className="tab-bar">
-        <button
-          className={view === "submitted" ? "tab active" : "tab"}
-          onClick={() => setView("submitted")}
-        >
-          Submitted
-        </button>
+      {/* Assignment Card */}
+      <div className="card assignment-card">
 
-        <button
-          className={view === "notSubmitted" ? "tab active" : "tab"}
-          onClick={() => setView("notSubmitted")}
-        >
-          Not Submitted
-        </button>
-      </div>
+        {/* Assignment Details */}
+        <div className="form-group">
+          <label>Assignment Title</label>
+          <input type="text" placeholder="Enter assignment title" />
+        </div>
 
-      <div className="list-card">
-        {(view === "submitted"
-          ? MOCK_DATA.submitted
-          : MOCK_DATA.notSubmitted
-        ).map((student, index) => (
-          <div key={index} className="student-row">
-            {student}
+        <div className="form-group">
+          <label>Description</label>
+          <textarea placeholder="Enter assignment description"></textarea>
+        </div>
+
+        {/* Target Selection */}
+        <div className="form-row">
+          <select>
+            <option>Subject</option>
+            <option>Operating Systems</option>
+            <option>DBMS</option>
+            <option>Computer Networks</option>
+          </select>
+
+          <select>
+            <option>Branch</option>
+            <option>CSE</option>
+            <option>ECE</option>
+          </select>
+
+          <select>
+            <option>Section</option>
+            <option>A</option>
+            <option>B</option>
+          </select>
+        </div>
+
+        {/* Deadline */}
+        <div className="form-row">
+          <div className="form-group">
+            <label>
+              <Calendar size={16} /> Deadline Date
+            </label>
+            <input type="date" />
           </div>
-        ))}
+
+          <div className="form-group">
+            <label>Deadline Time</label>
+            <input type="time" />
+          </div>
+        </div>
+
+        {/* File Upload */}
+        <div className="upload-box">
+          <FileText size={24} />
+          <p>Upload Assignment (PDF only)</p>
+          <input type="file" accept="application/pdf" />
+        </div>
+
+        {/* Actions */}
+        <div className="form-actions">
+          <button className="btn-primary">
+            <Upload size={16} /> Upload Assignment
+          </button>
+          <button className="btn-secondary">Reset</button>
+        </div>
+
+        {/* Info */}
+        <div className="info-text">
+          <Bell size={14} />
+          Students will be notified automatically once the assignment is uploaded.
+        </div>
+
       </div>
     </div>
   );
