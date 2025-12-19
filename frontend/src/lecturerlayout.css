@@ -1,0 +1,37 @@
+.lecturer-layout {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #111827, #020617);
+}
+
+.lecturer-sidebar {
+  width: 260px;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.9);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-title {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.lecturer-sidebar button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lecturer-sidebar button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.lecturer-content {
+  flex: 1;
+  padding: 40px;
+}

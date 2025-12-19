@@ -13,7 +13,10 @@ import StudentAssignments from "./pages/student/assignment";
 import StudentResults from "./pages/student/results";
 
 /* Lecturer */
+import LecturerLayout from "./pages/lecturer/lecturerlayout";
 import LecturerDashboard from "./pages/lecturer/dashboard";
+import LecturerTimetable from "./pages/lecturer/timetable";
+
 
 /* Admin */
 import AdminDashboard from "./pages/admin/dashboard";
@@ -22,11 +25,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Auth */}
+        {/* ================= AUTH ================= */}
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-        {/* Student */}
+        {/* ================= STUDENT ================= */}
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/timetable" element={<StudentTimetable />} />
@@ -34,13 +37,20 @@ function App() {
         <Route path="/student/assignments" element={<StudentAssignments />} />
         <Route path="/student/results" element={<StudentResults />} />
 
-        {/* Lecturer */}
-        <Route path="/lecturer/dashboard" element={<LecturerDashboard />} />
+        {/* ================= LECTURER (WITH LAYOUT) ================= */}
+        <Route path="/lecturer" element={<LecturerLayout />}>
+          <Route path="dashboard" element={<LecturerDashboard />} />
+          <Route path="timetable" element={<LecturerTimetable />} />
+          {/* later you can add */}
+          {/* <Route path="assignment" element={<LecturerAssignment />} /> */}
+          {/* <Route path="marks" element={<LecturerMarks />} /> */}
+          {/* <Route path="announcements" element={<LecturerAnnouncements />} /> */}
+        </Route>
 
-        {/* Admin */}
+        {/* ================= ADMIN ================= */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
-        {/* 404 */}
+        {/* ================= 404 ================= */}
         <Route
           path="*"
           element={

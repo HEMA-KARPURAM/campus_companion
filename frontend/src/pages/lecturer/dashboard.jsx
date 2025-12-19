@@ -1,53 +1,75 @@
-import DashboardShell from "../../components/layout/DashboardShell";
-import {
-  LECTURER_ID,
-  LECTURER_TIMETABLE,
-} from "../../lib/mock-lecturer-data";
+import "../../lecturedashboard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LecturerDashboard() {
-  const today = new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-  });
-
-  const todaysClasses = LECTURER_TIMETABLE.filter(
-    (cls) =>
-      cls.day === today && cls.lecturerId === LECTURER_ID
-  );
+  const navigate = useNavigate();
 
   return (
-    <DashboardShell role="lecturer">
-      <div className="page">
-        <h2>Today’s Classes</h2>
-        <p className="subtitle">
-          {today} · Based on branch & section
-        </p>
+    
+    <div className="dashboard-layout">
 
-        {todaysClasses.length === 0 ? (
-          <p className="empty-text">No classes scheduled today</p>
-        ) : (
-          todaysClasses.map((cls, index) => (
-            <div key={index} className="today-class-card">
-              <div className="class-time">
-                {cls.time}
-              </div>
+      {/* QUICK ACTIONS */}
+      <aside className="quick-actions">
+        <h3>Faculty Actions</h3>
 
-              <div className="class-info">
-                <h4>{cls.subject}</h4>
-                <p>
-                  {cls.branch} - Section {cls.section}
-                </p>
-                <span className="room">{cls.room}</span>
-              </div>
+        <button className="qa-btn">📅 Manage Timetable</button>
+        <button className="qa-btn">📤 Upload Assignment</button>
+        <button className="qa-btn">📄 View Submissions</button>
+        <button className="qa-btn">📝 Upload Marks</button>
+        <button className="qa-btn">📢 Announcements</button>
+      </aside>
 
-              <span
-                className={`status ${cls.status}`}
-              >
-                {cls.status}
-              </span>
+      {/* MAIN CONTENT */}
+      <main className="dashboard-main">
+        <header className="dashboard-header">
+          <h1>Welcome back, Professor 👋</h1>
+          <p className="sub-text">lecturer portal</p>
+        </header>
+
+        {/* STAT CARDS */}
+        <section className="stat-grid">
+          <div className="stat-card">
+            <h4>Assignments</h4>
+            <p>12 Pending</p>
+          </div>
+
+          <div className="stat-card">
+            <h4>Not Submitted</h4>
+            <p>18 Students</p>
+          </div>
+
+          <div className="stat-card">
+            <h4>Announcements</h4>
+            <p>3 Active</p>
+          </div>
+
+          <div className="stat-card">
+            <h4>Sections</h4>
+            <p>CSE A, CSE B</p>
+          </div>
+        </section>
+
+        {/* TODAY'S CLASSES */}
+        <section className="schedule-card">
+          <h3>Today's Classes</h3>
+
+          <div className="class-row">
+            <div>
+              <strong>Operating Systems</strong>
+              <p>CSE – Section A • CS-101</p>
             </div>
-          ))
-        )}
-      </div>
-    </DashboardShell>
+            <span className="badge success">09:00 - 10:00</span>
+          </div>
+
+          <div className="class-row">
+            <div>
+              <strong>DBMS</strong>
+              <p>CSE – Section B • CS-102</p>
+            </div>
+            <span className="badge danger">Cancelled</span>
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }

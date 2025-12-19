@@ -1,0 +1,89 @@
+.dashboard-layout {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  color: #fff;
+}
+
+/* Quick Actions */
+.quick-actions {
+  width: 260px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.quick-actions h3 {
+  margin-bottom: 16px;
+}
+
+.qa-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.qa-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Main */
+.dashboard-main {
+  flex: 1;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 4px;
+}
+
+.sub-text {
+  opacity: 0.7;
+}
+
+/* Stats */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.04);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+/* Schedule */
+.schedule-card {
+  background: rgba(255,255,255,0.04);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.class-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.success {
+  background: #1f8f6a;
+}
+
+.danger {
+  background: #a83232;
+}

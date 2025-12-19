@@ -1,0 +1,97 @@
+.page-title {
+  color: white;
+  margin-bottom: 6px;
+}
+
+.page-subtitle {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filter-bar select {
+  background: #020617;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.timetable-list {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.timetable-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.timetable-row:last-child {
+  border-bottom: none;
+}
+
+.muted {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-pill {
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.status.scheduled {
+  background: rgba(16,185,129,0.15);
+  color: #34d399;
+}
+
+.status.cancelled {
+  background: rgba(239,68,68,0.15);
+  color: #f87171;
+}
+
+.swap-btn {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #60a5fa;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #f87171;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.info-box {
+  margin-top: 16px;
+  color: #9ca3af;
+  font-size: 14px;
+}
