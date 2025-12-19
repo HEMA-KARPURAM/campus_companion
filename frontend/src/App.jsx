@@ -9,15 +9,18 @@ import LecturerLayout from "./pages/lecturer/lecturerlayout.jsx";
 import LecturerDashboard from "./pages/lecturer/dashboard.jsx";
 import LecturerTimetable from "./pages/lecturer/timetable.jsx";
 import LecturerAssignment from "./pages/lecturer/assignment.jsx";
-import LecturerStudentSubmission from "./pages/lecturer/studentsubmission.jsx";
+import LecturerSubmissions from "./pages/lecturer/studentsubmissions.jsx";
+import LecturerAnnouncements from "./pages/lecturer/announcements.jsx";
 
-// import LecturerMarks from "./pages/lecturer/marks.jsx";
+
+import LecturerMarks from "./pages/lecturer/marks.jsx";
 // import LecturerAnnouncements from "./pages/lecturer/announcements.jsx";
 
 /* STUDENT */
 import StudentDashboard from "./pages/student/dashboard.jsx";
 import StudentTimetable from "./pages/student/timetable.jsx";
 import StudentAssignments from "./pages/student/assignment.jsx";
+import StudentEvents from "./pages/student/events.jsx";
 import StudentProfile from "./pages/student/profile.jsx";
 import StudentResults from "./pages/student/results.jsx";
 
@@ -34,8 +37,13 @@ export default function App() {
         <Route path="/lecturer" element={<LecturerLayout />}>
           <Route path="dashboard" element={<LecturerDashboard />} />
           <Route path="timetable" element={<LecturerTimetable />} />
-          <Route path="upload-assignment" element={<LecturerAssignment />} />
-          {/* <Route path="upload-marks" element={<LecturerMarks />} />
+          <Route path="assignment" element={<LecturerAssignment />} />
+          <Route path="submissions" element={<LecturerSubmissions />} />
+          <Route path="marks" element={<LecturerMarks />} />
+          <Route path="announcements" element={<LecturerAnnouncements />} />
+
+
+          {/*<Route path="upload-marks" element={<LecturerMarks />} />
           <Route path="announcements" element={<LecturerAnnouncements />} /> */}
         </Route>
 
@@ -45,6 +53,8 @@ export default function App() {
         <Route path="/student/assignments" element={<StudentAssignments />} />
         <Route path="/student/profile" element={<StudentProfile />} />
         <Route path="/student/results" element={<StudentResults />} />
+        <Route path="/student/events" element={<StudentEvents />} />
+
 
       </Routes>
     </Router>

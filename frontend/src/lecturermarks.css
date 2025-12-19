@@ -1,0 +1,91 @@
+.marks-container {
+  color: white;
+}
+
+.page-title {
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+/* FILTER BAR */
+.marks-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.marks-filters input,
+.marks-filters select {
+  background: #020617;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* CARD */
+.marks-card {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.marks-header,
+.marks-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.marks-header {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.marks-row {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.marks-row:last-child {
+  border-bottom: none;
+}
+
+.marks-row input {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
+}
+
+/* ACTIONS */
+.marks-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid #ef4444;
+  color: #f87171;
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+.publish-btn {
+  background: #2563eb;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: none;
+}
