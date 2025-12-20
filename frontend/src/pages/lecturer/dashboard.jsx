@@ -81,12 +81,12 @@ export default function LecturerDashboard() {
         <section className="stat-grid">
           <div className="stat-card">
             <h4>Assignments</h4>
-            <p>12 Pending</p>
+            <p>12 submitted</p>
           </div>
 
           <div className="stat-card">
             <h4>Not Submitted</h4>
-            <p>18 Students</p>
+            <p>18 pending</p>
           </div>
 
           <div className="stat-card">
